@@ -14,27 +14,29 @@ console.log('suma: ', parseInt(numero) + parseInt(numero2)) */
 // Juego de los Numeros
 
 const numeroAdivinar =  10
-numeroIntroducido = -1
-let numeroIntroducido = prompt('Introduce un numero: ')
-var intentos = 0
+let numeroIntroducido = -1
+let intentos = 0
 
 
 while ( intentos<3 && numeroAdivinar != numeroIntroducido  )
     {
     console.log('intentos:',intentos)
+    let numeroIntroducido = prompt('Introduce un numero: ')
     console.log('numeroIntroducido:',numeroIntroducido)
-    intentos++
+
+
 
     if (numeroIntroducido < numeroAdivinar) {
-        console.log('El numero es mayor, aumenta un poco el numero')
+        console.log('El numero es mayor')
     }   
    
     else if (numeroIntroducido > numeroAdivinar){
-        console.log('El numero es menor, disminuye un poco el numero')
+        console.log('El numero es menor')
         
     } 
     else {
         console.log('lo has acertado!!!')
     } 
+    intentos++
  //numeroIntroducido = prompt('Introduce un numero: ')
 } 
