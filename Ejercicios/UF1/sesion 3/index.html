@@ -5,16 +5,17 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sesion 5</title>
     <style>
-        #p1{
+        #p1 {
             background-color: red;
         }
-        .a{
-
+        .a {
+            /* Empty class, can be used for styling */
         }
-        .borde{
-
+        .borde {
+            /* Add border styling here if needed */
+            border: 2px solid black; /* Example of border */
         }
-        .cuadrado{
+        .cuadrado {
             width: 100px;
             height: 100px;
             background-color: aqua;
@@ -24,36 +25,50 @@
 </head>
 <body>
     <h1>Estilos, Clases y atributos del DOM</h1>
-    <p id="p1" style="background-color: red;">Color de fondo</p>
-    <p id="p2" title="Title de parrafo" class="alerta textoGrande">Parrafo con clases </p>
+    <p id="p1">Color de fondo</p>
+    <p id="p2" title="Title de parrafo" class="alerta textoGrande">Parrafo con clases</p>
     <div>
         <div class="cuadrado">1</div>
         <div class="cuadrado">2</div>
         <div class="cuadrado">3</div>
     </div>
+    <input type="text" id="input1" value="valor inicial">
+    <button>Modificar Input</button>
     <script>
-        document.querySelector('#p1').style.backgroundColor = "blue";
-        //modificar estilo (el nombre del estilo debe estar en camelCase)
-        document.querySelector('#p1').style.display = "none";
-        //ocultar elemento
+        document.querySelector('#p1').style.backgroundColor = "blue"; // Change background color
+        document.querySelector('#p1').style.display = "none"; // Hide element
 
-        //añadir y quitar clases
-        console.log(document.querySelector('#p2').classList.add("borde"));
-        console.log(document.querySelector('#p2').classList.remove("alerta"));
+        // Add and remove classes
+        document.querySelector('#p2').classList.add("borde"); // No need for console.log
+        document.querySelector('#p2').classList.remove("alerta");
 
-        //ver/Añadir y modificar atributos
-       const title = document.querySelector('#p2').getAttribute("title");
-        console.log('title de p2', p2.getAtribute("title"));
-        p2.setAtribute('title', 'title modificado')
-        console.log('nuevo title', p2.getAtribute("title"));
+        // View/Add and modify attributes
+        const p2 = document.querySelector('#p2'); // Correctly reference p2
+        const title = p2.getAttribute("title");
+        console.log('title de p2', title); // Corrected getAttribute to getAttribute
+        p2.setAttribute('title', 'title modificado'); // Corrected setAttribute
+        console.log('nuevo title', p2.getAttribute("title")); // Corrected getAttribute
 
         const cuadrado = document.querySelector('.cuadrado');
         console.log(cuadrado.innerHTML);
-        //selecionar todos los elementos
+        
+        // Select all elements
         const cuadrados = document.querySelectorAll('.cuadrado');
-        console.log('cuadrados', cuadrado);
-        console,log('segundo cuadrado', cuadrados[1].innerHTML);
+        console.log('cuadrados', cuadrados); // Corrected variable name
+        console.log('segundo cuadrado', cuadrados[1].innerHTML); // Fixed typo console,log to console.log
         cuadrados[2].classList.add('borde');
+
+        // Access and modify the value of an input
+        const input = document.querySelector('#input1');
+        console.log('value del input: ', input.value);
+        console.log('id del input: ', input.id);
+
+        input.value = "nuevo valor";
+
+        document.querySelector('button').addEventListener('click', function() { // Corrected event name and syntax
+            const texto = document.querySelector('#input1').value;
+            alert('valor actual del input: ' + texto); // Corrected alert syntax
+        });
     </script>
 </body>
 </html>
