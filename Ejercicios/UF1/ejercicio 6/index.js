@@ -30,20 +30,18 @@ crearFichaBtn.addEventListener('click', function(event) {
     // Capturar los elementos de la tarjeta para modificar
     const fichaImg = document.querySelector('.card-img-top'); // Imagen de la tarjeta
     const fichaNombre = document.querySelector('.card-title span:first-child'); // Primer nombre de la tarjeta
-    const fichaApellido1 = document.querySelector('.card-title span:nth-child(2)'); // Primer apellido de la tarjeta
-    const fichaApellido2 = document.querySelector('.card-title span:nth-child(3)'); // Segundo apellido de la tarjeta
+    const fichaApellidos = document.querySelector('.card-title span:nth-child(2)'); // Primer apellido de la tarjeta
     const fichaDNI = document.querySelector('.card-body p span'); // DNI de la tarjeta
    
     //span:nth-child(1) es el primer <span>, 
-    // span:nth-child(2) es el segundo <span> y span:nth-child(3) es el tercer <span>.
+    // span:nth-child(2) es el segundo <span>.
     // Se utiliza para acceder a elementos específicos, como los apellidos en la tarjeta, ya que los tres se ubicarian en el mismo lugar
     // <h5 class="card-title"><span>Perico</span> <span>Mepiedras Rocosas</span></h5>   
 
     // Inyectar los datos en la ficha
     fichaImg.setAttribute('src', imgInput.value); // Cambiar la imagen
     fichaNombre.textContent = nombreInput.value; // Cambiar el nombre
-    fichaApellido1.textContent = primerApellido; // Cambiar el primer apellido
-    fichaApellido2.textContent = segundoApellido; // Cambiar el segundo apellido
+    fichaApellidos.textContent = `${apellido1Input.value} ${apellido2Input.value}`; // Cambiar los apellidos
     fichaDNI.textContent = dniInput.value; // Cambiar el DNI
 
     // Limpiar los campos después de crear la ficha
