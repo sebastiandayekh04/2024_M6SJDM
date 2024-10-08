@@ -1,99 +1,55 @@
-console.log("tengo hambre");
+console.log("probando");
+// prevent.default() para evitar recargas inesperadas
+//event.stopPropagation()
+//.value para gaurdar los datos
+// getAttribute en los inputs para recibir los datos
+//setAtributte para cambiar los datos de la carta
+//removeAtributte para limpiar los inputs sin que se reinicie la pagina
+//hasAttribute para no dejar pasar los si estan incompletos
 
-let preguntas = [
-    {
-        // Pregunta sobre los títulos de la Champions
-        pregunta: "¿Cuál es el club con más títulos de la Champions League?",
-        opciones: ["AC Milan", "Real Madrid", "Liverpool", "Barcelona"],
-        correcta: 1 // La respuesta correcta es Real Madrid 
-    },
-    {
-        // Máximo goleador de la Champions
-        pregunta: "¿Quién es el máximo goleador histórico de la Champions League?",
-        opciones: ["Cristiano Ronaldo", "Lionel Messi", "Raúl", "Robert Lewandowski"],
-        correcta: 0 // Cristiano Ronaldo
-    },
-    {
-        // Ganador de la Champions 2022-2023
-        pregunta: "¿Qué equipo ganó la Champions League en la temporada 2022-2023?",
-        opciones: ["Manchester City", "Real Madrid", "Inter de Milán", "Chelsea"],
-        correcta: 0 // Manchester City
-    },
-    {
-        // Año de establecimiento de la Champions
-        pregunta: "¿En qué año se estableció la nueva Champions League?",
-        opciones: ["1992", "1986", "1999", "2000"],
-        correcta: 0 // 1992
-    },
-    {
-        // Mejor jugador en finales
-        pregunta: "¿Qué jugador ha sido nombrado mejor jugador de la final de la Champions League más veces?",
-        opciones: ["Cristiano Ronaldo", "Lionel Messi", "Franco Baresi", "Paolo Maldini"],
-        correcta: 0 // Cristiano Ronaldo
+// clic en el botón 'Crear ficha'
+const crearFichaBtn = document.querySelector('.btn-success'); // Botón para crear la ficha
+
+// Añadir un evento 'click' al botón
+crearFichaBtn.addEventListener('click', function(event) {
+    event.preventDefault(); // Evita la recarga de la página
+
+    // Capturar los inputs del formulario usando su id
+    const nombreInput = document.getElementById('nombre');
+    const apellido1Input = document.getElementById('apellido1');
+    const apellido2Input = document.getElementById('apellido2');
+    const dniInput = document.getElementById('dni');
+    const imgInput = document.getElementById('imgURL');
+
+    // Verificar si todos los campos tienen valor
+    if (!nombreInput.value || !apellido1Input.value || !apellido2Input.value || !dniInput.value || !imgInput.value) {
+        console.log("Por favor, completa todos los campos.");
+        return; // Si algún campo está vacío, no se procesa la ficha
     }
-];
 
-// Variable para guardar la pregunta actual
-let preguntaActual; 
+    // Capturar los elementos de la tarjeta para modificar
+    const fichaImg = document.querySelector('.card-img-top'); // Imagen de la tarjeta
+    const fichaNombre = document.querySelector('.card-title span:first-child'); // Primer nombre de la tarjeta
+    const fichaApellidos = document.querySelector('.card-title span:nth-child(2)'); // Primer apellido de la tarjeta
+    const fichaDNI = document.querySelector('.card-body p span'); // DNI de la tarjeta
+   
+    //span:nth-child(1) es el primer <span>, 
+    // span:nth-child(2) es el segundo <span>.
+    // Se utiliza para acceder a elementos específicos, como los apellidos en la tarjeta, ya que los tres se ubicarian en el mismo lugar
+    // <h5 class="card-title"><span>Perico</span> <span>Mepiedras Rocosas</span></h5>   
 
-// Función que muestra la pregunta
-function generarPregunta() {
-    // Selecciona una pregunta al azar
-    const numeroAleatorio = Math.floor(Math.random() * preguntas.length); 
-    console.log("Número aleatorio generado: ", numeroAleatorio); // Log para ver qué pregunta se selecciona
-    preguntaActual = preguntas[numeroAleatorio]; 
+    // Inyectar los datos en la ficha
+    fichaImg.setAttribute('src', imgInput.value); // Cambiar la imagen
+    fichaNombre.textContent = nombreInput.value; // Cambiar el nombre
+    fichaApellidos.textContent = `${apellido1Input.value} ${apellido2Input.value}`; // Cambiar los apellidos
+    fichaDNI.textContent = dniInput.value; // Cambiar el DNI
 
-    console.log("Pregunta seleccionada: ", preguntaActual.pregunta); // Log de la pregunta actual
+    // Limpiar los campos después de crear la ficha
+    nombreInput.value = '';
+    apellido1Input.value = '';
+    apellido2Input.value = '';
+    dniInput.value = '';
+    imgInput.value = '';
 
-    // Muestra la pregunta en el HTML
-    document.querySelector('#question').textContent = preguntaActual.pregunta;
-
-    // Limpia respuestas anteriores
-    const contenedorRespuestas = document.querySelector('#answers'); 
-    contenedorRespuestas.innerHTML = ''; 
-
-    // Genera los botones de respuesta
-    let botones = '';
-    for (let i = 0; i < preguntaActual.opciones.length; i++) { 
-        botones += `
-        <button class="btn btn-primary" id="answer${i}">${preguntaActual.opciones[i]}</button>
-        `;
-    }
-    contenedorRespuestas.innerHTML = botones; 
-    console.log("Opciones de respuesta generadas:", preguntaActual.opciones); // Log de las opciones
-
-    // Oculta el resultado (correcto o incorrecto)
-    const resultado = document.querySelector('#result'); 
-    resultado.style.display = "none"; 
-
-    // Añade el evento para comprobar si la respuesta es correcta
-    const botonesRespuestas = document.querySelectorAll('#answers button'); 
-    for (let i = 0; i < botonesRespuestas.length; i++) {
-        botonesRespuestas[i].addEventListener('click', function() { 
-            // Muestra el resultado
-            resultado.style.display = "block"; 
-
-            console.log("Respuesta seleccionada: ", preguntaActual.opciones[i]); // Log de la respuesta seleccionada
-
-            // Verifica si la respuesta es correcta
-            if (i === preguntaActual.correcta) { 
-                console.log("¡Respuesta correcta!"); // Log si la respuesta es correcta
-                resultado.className = 'alert alert-success'; 
-                resultado.textContent = "¡Respuesta Correcta!";
-            } else {
-                console.log("Respuesta incorrecta"); // Log si la respuesta es incorrecta
-                resultado.className = 'alert alert-danger'; 
-                resultado.textContent = "Respuesta Incorrecta";
-            }
-        });
-    }
-}
-
-// Llama a la función para mostrar la primera pregunta
-generarPregunta();
-
-// Evento para mostrar la siguiente pregunta
-document.querySelector('#next-question').addEventListener('click', function() {
-    console.log("Mostrando la siguiente pregunta..."); // Log para saber cuándo se cambia de pregunta
-    generarPregunta(); 
+    console.log("Ficha creada exitosamente");
 });
