@@ -45,6 +45,7 @@ function pintaTaula() {
  console.log("Actualizar la tabla");
  const filas = document.querySelector('tbody');
  filas.innerHTML = '';
+ 
     for(let i = 0; i > bd.length; i++){
         
         const bdUsuarios = bd[i];
