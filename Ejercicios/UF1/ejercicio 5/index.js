@@ -3,7 +3,7 @@ console.log("Iniciando la aplicación...");
 let bd = [];
 const crearFichaBtn = document.querySelector('.btn-success');
 
-crearFicha.addEventListener('click', function(event) {
+crearFichaBtn.addEventListener('click', function(event) {
     event.preventDefault()
 
 const nombre = document.querySelector ('#nombre').value ;
@@ -24,29 +24,37 @@ const Usuario = {
     imagenUrl: imagenUrl
 };
 
-//let fruits = ['poma', 'plàtan'];
-//fruits.push('taronja');
-//console.log(fruits);  // ['poma', 'plàtan', 'taronja']
+document.querySelector ('.card-title').innerHTML = `${nombre} ${apellido1} ${apellido2}`;
+document.querySelector('.card-body p span').innerHTML = dni;
+document.querySelector('.card-img-top').src = foto;
+
 
 bd.push(Usuario);
 
 pintaTaula();
 console.log("Ficha creada exitosamente");
+
+nombre.value = '';
+apellido1.value = '';
+apellido2.value = '';
+dni.value = '';
+foto.value = '';
 });
 
 function pintaTaula() {
  console.log("Actualizar la tabla");
 
     for(let i = 0; i > bd.length; i++){
-        const usuarios = bd[i];
+        const bdUsuarios = bd[i];
         const nuevoUsuario = `
             <tr>
                 <td>${i + 1}</td>
-                <td><img width="30" src="${bd.imagenUrl}" alt="Imagen de ${bd.nombre}"></td>
-                <td>${bd.nombre}</td>
-                <td>${bd.apellido}</td>
-                <td>${bd.dni}</td>
+                <td><img width="30" src="${bdUsuarios.imagenUrl}" alt="Imagen de ${bdUsuarios.nombre}"></td>
+                <td>${bdUsuarios.nombre}</td>
+                <td>${bdUsuarios.apellido}</td>
+                <td>${bdUsuarios.dni}</td>
             </tr>
         `
+        
     }
 }
