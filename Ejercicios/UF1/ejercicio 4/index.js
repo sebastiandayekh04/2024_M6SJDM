@@ -15,16 +15,12 @@ crearFichaBtn.addEventListener('click', function(event) {
     event.preventDefault(); // Evita la recarga de la página
 
     // Capturar los inputs del formulario usando su id
-    const nombre = document.querySelector ('#nombre').value ;
-    console.log('nombre', nombre);
-    const apellido1 = document.querySelector ('#apellido1').value ;
-    console.log('apellido1', apellido1);
-    const apellido2 = document.querySelector ('#apellido2').value ;
-    console.log('apellido2', apellido2);
-    const dni = document.querySelector ('#dni').value ;
-    console.log('dni', dni);
-    const foto =  document.querySelector ('#imagenUrl').value;
-    console.log('imagenUrl', imagenUrl);
+    const nombreInput = document.getElementById('nombre');
+    const apellido1Input = document.getElementById('apellido1');
+    const apellido2Input = document.getElementById('apellido2');
+    const dniInput = document.getElementById('dni');
+    const imgInput = document.getElementById('imgURL');
+
 
     // Capturar los elementos de la tarjeta para modificar
     const fichaImg = document.querySelector('.card-img-top'); // Imagen de la tarjeta

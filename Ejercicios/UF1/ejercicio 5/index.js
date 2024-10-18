@@ -48,6 +48,5 @@ function pintaTaula() {
                 <td>${bd.dni}</td>
             </tr>
         `
-
     }
 }
