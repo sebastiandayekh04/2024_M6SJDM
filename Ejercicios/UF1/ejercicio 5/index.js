@@ -2,7 +2,8 @@ console.log("Iniciando la aplicación...");
 
 let bd = [];
 const crearFichaBtn = document.querySelector('.btn-success');
-crearFicha.addEventListener('click', function(event)) {
+
+crearFicha.addEventListener('click', function(event) {
     event.preventDefault()
 
 const nombre = document.querySelector ('#nombre').value ;
@@ -13,7 +14,7 @@ const apellido2 = document.querySelector ('#apellido2').value ;
 console.log('apellido2', apellido2);
 const dni = document.querySelector ('#dni').value ;
 console.log('dni', dni);
-const foto =  document.querySelector ('#imagenUrl').value,;
+const foto =  document.querySelector ('#imagenUrl').value;
 console.log('imagenUrl', imagenUrl);
 
 const nuevoUsuario = {
@@ -26,4 +27,4 @@ const nuevoUsuario = {
 
 console.log("Ficha creada exitosamente");
 
-};
+});
