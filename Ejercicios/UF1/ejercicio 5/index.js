@@ -34,17 +34,19 @@ bd.push(Usuario);
 pintaTaula();
 console.log("Ficha creada exitosamente");
 
-nombre.value = '';
-apellido1.value = '';
-apellido2.value = '';
-dni.value = '';
-foto.value = '';
+nombre.innerHTML = '';
+apellido1.innerHTML = '';
+apellido2.innerHTML = '';
+dni.innerHTML = '';
+foto.innerHTML = '';
 });
 
 function pintaTaula() {
  console.log("Actualizar la tabla");
-
+ const filas = document.querySelector('tbody');
+ filas.innerHTML = '';
     for(let i = 0; i > bd.length; i++){
+        
         const bdUsuarios = bd[i];
         const nuevoUsuario = `
             <tr>
@@ -55,6 +57,6 @@ function pintaTaula() {
                 <td>${bdUsuarios.dni}</td>
             </tr>
         `
-        
+        filas.innerHTML += nuevoUsuario;
     }
 }
