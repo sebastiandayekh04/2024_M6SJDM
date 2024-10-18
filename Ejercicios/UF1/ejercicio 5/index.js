@@ -17,13 +17,18 @@ console.log('dni', dni);
 const foto =  document.querySelector ('#imagenUrl').value;
 console.log('imagenUrl', imagenUrl);
 
-const nuevoUsuario = {
+const Usuario = {
     nombre: nombre,
     apellido: `${apellido1} ${apellido2}`,
     dni: dni,
     imagenUrl: imagenUrl
 };
 
+//let fruits = ['poma', 'plàtan'];
+//fruits.push('taronja');
+//console.log(fruits);  // ['poma', 'plàtan', 'taronja']
+
+Usuario.push(Usuario);
 
 console.log("Ficha creada exitosamente");
 
