@@ -15,17 +15,16 @@ crearFichaBtn.addEventListener('click', function(event) {
     event.preventDefault(); // Evita la recarga de la página
 
     // Capturar los inputs del formulario usando su id
-    const nombreInput = document.getElementById('nombre');
-    const apellido1Input = document.getElementById('apellido1');
-    const apellido2Input = document.getElementById('apellido2');
-    const dniInput = document.getElementById('dni');
-    const imgInput = document.getElementById('imgURL');
-
-    // Verificar si todos los campos tienen valor
-    if (!nombreInput.value || !apellido1Input.value || !apellido2Input.value || !dniInput.value || !imgInput.value) {
-        console.log("Por favor, completa todos los campos.");
-        return; // Si algún campo está vacío, no se procesa la ficha
-    }
+    const nombre = document.querySelector ('#nombre').value ;
+    console.log('nombre', nombre);
+    const apellido1 = document.querySelector ('#apellido1').value ;
+    console.log('apellido1', apellido1);
+    const apellido2 = document.querySelector ('#apellido2').value ;
+    console.log('apellido2', apellido2);
+    const dni = document.querySelector ('#dni').value ;
+    console.log('dni', dni);
+    const foto =  document.querySelector ('#imagenUrl').value;
+    console.log('imagenUrl', imagenUrl);
 
     // Capturar los elementos de la tarjeta para modificar
     const fichaImg = document.querySelector('.card-img-top'); // Imagen de la tarjeta

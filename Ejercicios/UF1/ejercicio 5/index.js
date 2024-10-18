@@ -28,8 +28,26 @@ const Usuario = {
 //fruits.push('taronja');
 //console.log(fruits);  // ['poma', 'plàtan', 'taronja']
 
-Usuario.push(Usuario);
+bd.push(Usuario);
 
+pintaTaula();
 console.log("Ficha creada exitosamente");
-
 });
+
+function pintaTaula() {
+ console.log("Actualizar la tabla");
+
+    for(let i = 0; i > bd.length; i++){
+        const usuarios = bd[i];
+        const nuevoUsuario = `
+            <tr>
+                <td>${i + 1}</td>
+                <td><img width="30" src="${bd.imagenUrl}" alt="Imagen de ${bd.nombre}"></td>
+                <td>${bd.nombre}</td>
+                <td>${bd.apellido}</td>
+                <td>${bd.dni}</td>
+            </tr>
+        `
+
+    }
+}
