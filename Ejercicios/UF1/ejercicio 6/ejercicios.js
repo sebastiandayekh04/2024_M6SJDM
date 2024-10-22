@@ -18,11 +18,10 @@ function determinarSigne(num) {
     } else {
         return "eñ numero es cero"
     }
-
+}
 console.log(determinarSigne(-10)); // Retorna "El número és negatiu."
 console.log(determinarSigne(0));   // Retorna "El número és zero."
 console.log(determinarSigne(7));   // Retorna "El número és positiu."
-
 //Ejercicio 3 - Máxima de tres números
 function trobarMaxim(a, b, c) {
     return Math.max(a,b,c);
@@ -99,5 +98,10 @@ function calcularSinus(angleGraus) {
 
 console.log(calcularSinus(30)); // Retorna 0.5
 console.log(calcularSinus(90)); // Retorna 1
+// String
+// Exercici 1 - Interpolació de variables amb cometes obertes
 
+function interpolarVariables(nom, edat) {
+   return 'El meu nom és ${nom} i tinc ${anys} anys';
 }
+console.log(interpolarVariables("Joan", 25)); // Retorna "El meu nom és Joan i tinc 25 anys."
