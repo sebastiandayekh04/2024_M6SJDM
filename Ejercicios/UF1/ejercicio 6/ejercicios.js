@@ -1,7 +1,7 @@
 //Exercici 1 - Valor absolut
 
 function ValorAbsolut(num){
-    return Math.abs(num);
+     return Math.abs(num);
 }
 
 console.log(valorAbsolut(-5)); // Retorna 5
@@ -105,3 +105,145 @@ function interpolarVariables(nom, edat) {
    return 'El meu nom és ${nom} i tinc ${anys} anys';
 }
 console.log(interpolarVariables("Joan", 25)); // Retorna "El meu nom és Joan i tinc 25 anys."
+//Ejercicio 2 -charAt
+function obtenirCaracter(cadena, posicio) {
+    return cadena.charAt(posicio);
+}
+console.log(obtenirCaracter("Hola", 1)); // Retorna "o"
+
+//Ejercicio 3 -indexOf
+function trobarPosicio(cadena, subcadena) {
+    return cadena.indexOf(subcadena); 
+}
+
+console.log(trobarPosicio("JavaScript és genial", "genial")); // Retorna 13
+
+//Ejercicio 4 -repeat
+
+function repetirCadena(cadena, vegades) {
+    return cadena.repeat(vegades);
+}
+
+console.log(repetirCadena("Hola", 3)); // Retorna "HolaHolaHola"
+
+//Ejercicio 5 -substring
+
+function obtenirSubstring(cadena, inici, fi) {
+    return cadena.substring(inici, fi);
+}
+
+console.log(obtenirSubstring("JavaScript", 0, 4)); // Retorna "Java"
+
+//Ejercicio 6 -substr
+function obtenirSubstr(cadena, inici, longitud) {
+    return cadena.substr(inici, longitud);
+}
+
+console.log(obtenirSubstr("JavaScript", 4, 6)); // Retorna "Script"
+
+//Ejercicio 7 -split
+function dividirCadena(cadena, separador) {
+    return cadena.split(separador);
+}
+
+
+console.log(dividirCadena("poma,pera,plàtan", ",")); // Retorna ["poma", "pera", "plàtan"]
+
+//Ejercicio 8 -startsWith
+
+function comencaAmb(cadena, subcadena) {
+    return cadena.startsWith(subcadena);
+}
+
+// Exemple d'ús:
+console.log(comencaAmb("JavaScript", "Java")); // Retorna true
+
+//Ejercicio 9 -endsWith
+function acabaAmb(cadena, subcadena) {
+    return cadena.endsWith(subcadena);
+}
+
+// Exemple d'ús:
+console.log(acabaAmb("JavaScript", "Script")); // Retorna true
+
+//Ejercicio 10 -includes
+function contéSubcadena(cadena, subcadena) {
+    return cadena.includes(subcadena);
+}
+
+// Exemple d'ús:
+console.log(contéSubcadena("JavaScript és genial", "genial")); // Retorna true
+
+//Ejercicio 11 -search
+function cercarCadena(cadena, subcadena) {
+    return cadena.search(subcadena);
+}
+
+// Exemple d'ús:
+console.log(cercarCadena("JavaScript és genial", "genial")); // Retorna 13
+
+//Ejercicio 12 -match
+
+function buscarCoincidencies(cadena, patró) {
+    return cadena.match(patró);
+}
+
+console.log(buscarCoincidencies("Hola 123, adéu 456", /\d+/g)); // Retorna ["123", "456"]
+
+//Ejercicio 13 -replace
+
+function substituirCadena(cadena, vellSubcadena, nouSubcadena) {
+    return cadena.replace(vellSubcadena, nouSubcadena);
+}
+
+// Exemple d'ús:
+console.log(substituirCadena("Hola món", "món", "JavaScript")); // Retorna "Hola JavaScript"
+
+//Ejercicio 14 -replaceAll
+function substituirTotes(cadena, vellSubcadena, nouSubcadena) {
+    return cadena.replaceAll(vellSubcadena, nouSubcadena);
+}
+
+// Exemple d'ús:
+console.log(substituirTotes("Hola món, món", "món", "JavaScript")); // Retorna "Hola JavaScript, JavaScript"
+
+//Strings II
+//Ejercicio 1 -toLowerCase
+function convertirMinuscules(cadena) {
+    return cadena.toLowerCase;
+}
+
+// Exemple d'ús:
+console.log(convertirMinuscules("Hola Món")); // Retorna "hola món"
+
+//Ejercicio 2 -toUpperCase
+function convertirMajuscules(cadena) {
+    return cadena.toUpperCase;
+}
+
+// Exemple d'ús:
+console.log(convertirMajuscules("Hola Món")); // Retorna "HOLA MÓN"
+
+//Ejercicio 3 -trimStart
+function eliminarEspaisInicials(cadena) {
+    return cadena.trimStart;
+}
+
+// Exemple d'ús:
+console.log(eliminarEspaisInicials("   Hola Món")); // Retorna "Hola Món"
+
+//Ejercicio 4 -trimEnd
+function eliminarEspaisFinals(cadena) {
+    return cadena.trimEnd;
+}
+
+// Exemple d'ús:
+console.log(eliminarEspaisFinals("Hola Món   ")); // Retorna "Hola Món"
+
+//Ejercicio 5 -trim
+function eliminarEspaisExtrems(cadena) {
+    return cadena.trim;
+}
+
+// Exemple d'ús:
+console.log(eliminarEspaisExtrems("   Hola Món   ")); // Retorna "Hola Món"
