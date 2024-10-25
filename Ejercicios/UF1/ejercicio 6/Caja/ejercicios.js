@@ -210,7 +210,7 @@ console.log(substituirTotes("Hola món, món", "món", "JavaScript")); // Retorn
 //Strings II
 //Ejercicio 1 -toLowerCase
 function convertirMinuscules(cadena) {
-    return cadena.toLowerCase;
+    return cadena.toLowerCase();
 }
 
 // Exemple d'ús:
@@ -218,7 +218,7 @@ console.log(convertirMinuscules("Hola Món")); // Retorna "hola món"
 
 //Ejercicio 2 -toUpperCase
 function convertirMajuscules(cadena) {
-    return cadena.toUpperCase;
+    return cadena.toUpperCase();
 }
 
 // Exemple d'ús:
@@ -226,7 +226,7 @@ console.log(convertirMajuscules("Hola Món")); // Retorna "HOLA MÓN"
 
 //Ejercicio 3 -trimStart
 function eliminarEspaisInicials(cadena) {
-    return cadena.trimStart;
+    return cadena.trimStart();
 }
 
 // Exemple d'ús:
@@ -234,7 +234,7 @@ console.log(eliminarEspaisInicials("   Hola Món")); // Retorna "Hola Món"
 
 //Ejercicio 4 -trimEnd
 function eliminarEspaisFinals(cadena) {
-    return cadena.trimEnd;
+    return cadena.trimEnd();
 }
 
 // Exemple d'ús:
