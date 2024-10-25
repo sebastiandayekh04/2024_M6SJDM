@@ -1,6 +1,6 @@
 //Exercici 1 - Valor absolut
 
-function ValorAbsolut(num){
+function valorAbsolut(num){
      return Math.abs(num);
 }
 
@@ -14,7 +14,7 @@ function determinarSigne(num) {
     if (signo === 1){
         return "El numero es positivo"
     }else if (signo === -1){
-        return "el numro es negativo"
+        return "el numero es negativo"
     } else {
         return "eñ numero es cero"
     }
@@ -102,7 +102,7 @@ console.log(calcularSinus(90)); // Retorna 1
 // Exercici 1 - Interpolació de variables amb cometes obertes
 
 function interpolarVariables(nom, edat) {
-   return 'El meu nom és ${nom} i tinc ${anys} anys';
+   return `El meu nom és ${nom} i tinc ${edat} anys`;
 }
 console.log(interpolarVariables("Joan", 25)); // Retorna "El meu nom és Joan i tinc 25 anys."
 //Ejercicio 2 -charAt
@@ -242,7 +242,7 @@ console.log(eliminarEspaisFinals("Hola Món   ")); // Retorna "Hola Món"
 
 //Ejercicio 5 -trim
 function eliminarEspaisExtrems(cadena) {
-    return cadena.trim;
+    return cadena.trim();
 }
 
 // Exemple d'ús:
