@@ -213,7 +213,7 @@ strong{
       crossorigin="anonymous"
     ></script>
     <script>
-      
+     // Array multidimensional que contiene todos los tipos de cerveza y y sus variables
   const tipos_cervezas = [
     {
       nombre: "Estrella Damm",
@@ -246,101 +246,107 @@ strong{
       foto: "https://ambar.com/tienda/wp-content/uploads/2023/03/Botella-33-Ambar-Especial.png",
     },
   ];
+  //array que representa los pedidos de la mesa, inicializadas pero vacias
   let mesas = [[], [], [], [], []];
-
+    console.log("Inicio")
+    //llama la funcion para que en el selector se impiriman las cervezas(nombre) y en la tabla de inicio se itere con el for y se muestren las cervezas con todos sus valores
   cargarCervezasEnSelector();
   //mostrarMesas();
 
   // Eventos
-  document.getElementById("hacer-pedido-btn").onclick = hacerPedido;
-  document.getElementById("toggle-lista-btn").onclick = toggleListaCervezas;
-
+  document.getElementById("hacer-pedido-btn").onclick = hacerPedido; //se carga el evento al momento que se haga click en el boton
+  document.getElementById("toggle-lista-btn").onclick = toggleListaCervezas; //se carga el evento al momento que se haga click en el boton
+    //llena de cerveza el "menu" y el selector de cerveza
   function cargarCervezasEnSelector() {
-    const selector = document.getElementById("cerveza-select");
-    const tableBody = document.getElementById("cerveza-table-body");
+    
+    const selector = document.getElementById("cerveza-select"); //guarda la direccion donde se encuentra el id en una variable
+    const tableBody = document.getElementById("cerveza-table-body"); //guarda la direccion donde se encuentra el id en una variable
+    for (let i = 0; i < tipos_cervezas.length; i++) { //va iterando por todo el array de cervezas hasta que se acabem
+      const cerveza = tipos_cervezas[i]; //va guardando el tipo de cerveza para imprimir los datos de la posicion donde este hasta que se terminen de inyectar los datos y se vuelva a iterar
 
-    for (let i = 0; i < tipos_cervezas.length; i++) {
-      const cerveza = tipos_cervezas[i];
+      selector.innerHTML += `<option value="${i}">${cerveza.nombre}</option>`; // se inyectan y concatenan las opciones de cerveza disponibles
 
-      selector.innerHTML += `<option value="${i}">${cerveza.nombre}</option>`;
-
-      tableBody.innerHTML += `
+      tableBody.innerHTML += ` 
         <tr>
           <td>${cerveza.nombre}</td>
           <td>${cerveza.precio}€</td>
           <td>${cerveza.graduacion}</td>
           <td><img src="${cerveza.foto}" width="100" height="100" /></td>
-        </tr>`;
+        </tr>`; //guarda en el "menu" los datos de la cerveza em que este y despues sigue a la siguiente cerveza hasta que se acaben los tipos
     }
   }
-
+//funcion para agregar un pedido a la mesa selecionada
   function hacerPedido() {
     const tipoCerveza = parseInt(
       document.getElementById("cerveza-select").value
-    );
-    const cantidad = parseInt(document.getElementById("cantidad-select").value);
-    const mesa = parseInt(document.getElementById("mesa-select").value);
-    const pedido = { tipo_cerveza: tipoCerveza, cantidad: cantidad };
+    );   // Obtiene el tipo de cervezas que se eligio y los guarda como integer
+    console.log(tipoCerveza);
+    const cantidad = parseInt(document.getElementById("cantidad-select").value);   // Obtiene la cantidad de cervezas seleccionadas
+    const mesa = parseInt(document.getElementById("mesa-select").value);  // Obtiene cual es la mesa seleccionada
+    const pedido = { tipo_cerveza: tipoCerveza, cantidad: cantidad }; //guarda la cerveza elegida y la cantidad 
 
-    mesas[mesa].push(pedido);
-    mostrarMesa(mesa);
+    mesas[mesa].push(pedido); //agrega el pedido a la mesa correspondiente
+    mostrarMesa(mesa); //actualiza las mesas llamando a su funcion
   }
 
-  function toggleListaCervezas() {
+  function toggleListaCervezas() { //Funcion para ocultar o mostrar las ceverzas
     const listaCervezas = document.getElementById("cerveza-lista");
     const botonToggle = document.getElementById("toggle-lista-btn");
 
     if (listaCervezas.style.display === "none") {
-      listaCervezas.style.display = "block";
-      botonToggle.textContent = "Ocultar Lista de Cervezas";
-    } else {
-      listaCervezas.style.display = "none";
-      botonToggle.textContent = "Mostrar Lista de Cervezas";
+      listaCervezas.style.display = "block"; //se ve el menu
+      botonToggle.textContent = "Ocultar Lista de Cervezas"; //cambia el contenido del boton dependiendo de si esta abierto o no el menu.
+    } else { //alterna entre mostrar y ocultar el menu de las cervezas
+      listaCervezas.style.display = "none"; //el menu esta oculto
+      botonToggle.textContent = "Mostrar Lista de Cervezas"; //cambia el contenido del boton dependiendo de si esta abierto o no el menu.
     }
   }
+  // Función para mostrar los pedidos de una mesa seleccionada.
   function mostrarMesa(numero_mesa) {
-    let pedidosMesa = "";
+    let pedidosMesa = ""; // se inician las mesas en blanco sin ninguna cerveza
     for (let j = 0; j < mesas[numero_mesa].length; j++) {
       const pedido = mesas[numero_mesa][j];
       const cerveza = tipos_cervezas[pedido.tipo_cerveza];
       pedidosMesa += `${cerveza.nombre} x${pedido.cantidad}<br/>\n`;
-    }
+    }  // Itera sobre los pedidos de la mesa seleccionada y los formatea para mostrarlos las cervezas que llevan pedidas, solo pero no se guarda la cuenta.
     document.querySelector("#pedidos_mesa_" + (numero_mesa + 1)).innerHTML =
-      pedidosMesa;
+      pedidosMesa; // Actualiza el contenido de la mesa con los pedidos realizados
   }
 
-  const modalPedido = document.getElementById("pedidoModal");
-  if (modalPedido) {
+  const modalPedido = document.getElementById("pedidoModal"); //obtiene la id para en lo siguiente volverlos un boton
+  if (modalPedido) { //si modal pedido existe 
     modalPedido.addEventListener("show.bs.modal", (event) => {
       const div_mesa = event.relatedTarget;
       let numero_mesa = parseInt(div_mesa.getAttribute("data-bs-nMesa"));
-      //
+      // cuando se clike dentro del area del div se mostrara el modal del bootstrap
+      // Ajusta el índice de la mesa para que coincida con el array.
       numero_mesa--;
-      calcularCuenta(numero_mesa);
+      calcularCuenta(numero_mesa); //dentro del bootstrap llama la funcion para mostrar los datos de los tipos de cerveza y sus precios, por pedido y total
     });
   }
-
+  // Funcion para calcular el total de un pedido y mostrarlo en el modal
   function calcularCuenta(numero_mesa) {
-    let total_precio = 0;
-    let detalles_html = "";
+    let total_precio = 0; // Variable para acumular el precio total
+    let detalles_html = ""; // zona para mostrar el desglose de cada pedido (pedido y el precio del pedido)
+     // Recorre los pedidos de la mesa seleccionada y calcula el precio de cada uno
     for (let i = 0; i < mesas[numero_mesa].length; i++) {
       total_precio_por_pedido = 0;
       let pedido = mesas[numero_mesa][i];
       let cerveza = tipos_cervezas[pedido.tipo_cerveza];
-      total_precio_por_pedido = cerveza.precio * pedido.cantidad;
-      detalles_html += `<tr>
+      total_precio_por_pedido = cerveza.precio * pedido.cantidad;  // Calcula el total multiplicando precio por cantidad.
+      detalles_html += `<tr> // se va iterando mostrando las cerveza, precio y pedidos en las zona que antes se habia declarado en blanco
           <td>${cerveza.nombre}</td>
           <td>${pedido.cantidad}</td>
           <td>${cerveza.precio}€</td>
           <td>${total_precio_por_pedido}€</td>
         </tr>`;
-      total_precio += total_precio_por_pedido;
+      total_precio += total_precio_por_pedido; //va sumando el total del precio del pedido para obtener el total del servicio
     }
 
     //modal-pedido-body
     //modal-total
-    document.getElementById("modal-pedido-body").innerHTML = detalles_html;
-    document.getElementById("modal-total").innerHTML = total_precio;
+    document.getElementById("modal-pedido-body").innerHTML = detalles_html; // guarda en la zona en blanco del modal los datos anteiormente mencionada
+    document.getElementById("modal-total").innerHTML = total_precio; // guarda el total del servicio
   }
 
 
