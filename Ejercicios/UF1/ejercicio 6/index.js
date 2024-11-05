@@ -6,3 +6,17 @@ function generarNumAleatorio(min, max){
 }
 let numMin = document.querySelector("#num1").value;
 let numMax = document.querySelector("#num2").value;
+
+document.querySelector("#buttonSubmit").addEventListener("click", () => {
+  let numMin = parseInt(document.querySelector("#num1").value);
+  let numMax = parseInt(document.querySelector("#num2").value);
+
+  let numeroAleatorio = generarNumeroAleatorio(numMin, numMax);
+  document.querySelector("#numeroAleatorio").textContent = numeroAleatorio;
+});
+
+//Ejercicio 2 - String
+
+function mayusculas(){
+    let btnMayusculas = document.querySelector("#mayuscula");
+}
